@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { db } from '../db/initDB';
+// import { PGlite } from '@electric-sql/pglite';
 import { PGlite } from '@electric-sql/pglite';
+
 
 export default function PatientTable({ refresh }: { refresh: boolean }) {
     const [patients, setPatients] = useState<any[]>([]);
