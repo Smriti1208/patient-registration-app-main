@@ -7,21 +7,8 @@
 //     exclude: ['@electric-sql/pglite'],
 //   },
 // });
-// vite.config.js
 
 
-
-// vite.config.js
-// import { defineConfig } from 'vite';
-// import { nodePolyfills } from 'vite-plugin-node-polyfills';
-
-// export default defineConfig({
-//   plugins: [
-//     nodePolyfills({
-//       include: ['fs', 'path'] // add other Node modules as needed
-//     })
-//   ]
-// });
 
 // vite.config.ts
 // import { defineConfig } from 'vite'
@@ -35,41 +22,15 @@
 // })
 
 
-
-
-// export default defineConfig({
-//   plugins: [react()],
-//   esbuild: {
-//     target: 'esnext'
-//   },
-//   build: {
-//     target: 'esnext'
-//   }
-// })
-
-
-import { defineConfig } from 'vite';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [
-    nodePolyfills({
-      // Specify which polyfills you need
-      include: ['fs', 'path', 'stream', 'util'],
-      globals: {
-        Buffer: true,
-        global: true,
-        process: true,
-      },
-    })
-  ],
-  optimizeDeps: {
-    include: ['@electric-sql/pglite']
+  plugins: [react()],
+  esbuild: {
+    target: 'esnext'
   },
   build: {
-    target: 'esnext', // for top-level await support
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    }
+    target: 'esnext'
   }
-});
+})

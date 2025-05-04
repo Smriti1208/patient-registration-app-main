@@ -1,5 +1,3 @@
-// import { PGlite } from '@electric-sql/pglite';
-// Make sure you're importing the browser-compatible version
 import { PGlite } from '@electric-sql/pglite';
 
 export const db = new PGlite('idb://patients-db');
