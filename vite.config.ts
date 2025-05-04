@@ -12,16 +12,16 @@
 
 
 // vite.config.js
-import { defineConfig } from 'vite';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
+// import { defineConfig } from 'vite';
+// import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
-export default defineConfig({
-  plugins: [
-    nodePolyfills({
-      include: ['fs', 'path'] // add other Node modules as needed
-    })
-  ]
-});
+// export default defineConfig({
+//   plugins: [
+//     nodePolyfills({
+//       include: ['fs', 'path'] // add other Node modules as needed
+//     })
+//   ]
+// });
 
 // vite.config.ts
 // import { defineConfig } from 'vite'
@@ -48,3 +48,28 @@ export default defineConfig({
 // })
 
 
+import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+
+export default defineConfig({
+  plugins: [
+    nodePolyfills({
+      // Specify which polyfills you need
+      include: ['fs', 'path', 'stream', 'util'],
+      globals: {
+        Buffer: true,
+        global: true,
+        process: true,
+      },
+    })
+  ],
+  optimizeDeps: {
+    include: ['@electric-sql/pglite']
+  },
+  build: {
+    target: 'esnext', // for top-level await support
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    }
+  }
+});
