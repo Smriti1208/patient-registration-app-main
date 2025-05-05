@@ -10,6 +10,7 @@ export default function App() {
     <div className="container">
       <h1>Patient Registration</h1>
       <PatientForm onRegister={() => setRefresh(!refresh)} />
+        <h2>Table</h2>
       <PatientTable refresh={refresh} />
       <h2>Custom SQL Query</h2>
       <SQLQuery />
